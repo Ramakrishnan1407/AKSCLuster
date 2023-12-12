@@ -26,7 +26,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     vm_size    = "Standard_D2_v2"
     node_count = var.node_count
   }
-  
+
   network_profile {
     network_plugin    = "kubenet"
     load_balancer_sku = "standard"
