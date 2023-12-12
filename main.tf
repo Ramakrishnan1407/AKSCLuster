@@ -41,3 +41,11 @@ resource "azurerm_container_registry" "acr_platform_shared" {
   sku                 = "Standard"
   admin_enabled       = true
 }
+
+resource "helm_release" "my-chart" {
+  name  = "hello-world"
+  chart = "hello-world"
+  repository  = "https://acrtest1407.azurecr.io/helm/v1/repo"
+  repository_username = "f024578a-6e8e-479b-a7b5-22c0d278e43f"
+  repository_password = "6aC8Q~dHAJfKcGMljSwf95W.Q2mV4qweOLlevcDw"
+}
