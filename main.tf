@@ -33,3 +33,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
     load_balancer_sku = "standard"
   }
 }
+
+resource "azurerm_container_registry" "acr_platform_shared" {
+  name                = "acrtest"
+  resource_group_name = azurerm_resource_group.default.name
+  location            = "westeurope"
+  sku                 = "Standard"
+  admin_enabled       = true
+}
