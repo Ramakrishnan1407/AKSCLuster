@@ -45,7 +45,12 @@ resource "azurerm_container_registry" "acr_platform_shared" {
 resource "helm_release" "my-chart" {
   name                = "hello-world"
   chart               = "helm/hello-world"
-  repository          = "https://acrtest1407.azurecr.io/helm/v1/repo"
+  repository          = "https://acrtest1407.azurecr.io/helm/v2/repo"
   repository_username = "f024578a-6e8e-479b-a7b5-22c0d278e43f"
   repository_password = "6aC8Q~dHAJfKcGMljSwf95W.Q2mV4qweOLlevcDw"
+
+  depends_on = [
+    azurerm_kubernetes_cluster.aks,
+    azurerm_container_registry.acr_platform_shared
+  ]
 }
