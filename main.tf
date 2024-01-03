@@ -42,6 +42,7 @@ resource "azurerm_container_registry" "acr_platform_shared" {
   admin_enabled       = true
 }
 
+/*
 resource "helm_release" "my-chart" {
   name                = "hello-world"
   chart               = "helm/hello-world"
@@ -53,4 +54,4 @@ resource "helm_release" "my-chart" {
     azurerm_kubernetes_cluster.aks,
     azurerm_container_registry.acr_platform_shared
   ]
-}
+} */
