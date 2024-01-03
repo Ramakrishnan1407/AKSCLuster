@@ -44,7 +44,7 @@ resource "azurerm_container_registry" "acr_platform_shared" {
 
 resource "helm_release" "example" {
   name        = "testchart"
-  repository  = "becse/shap/mule/chart/hello-world"
+  repository  = "https://acrtest1407.azurecr.io/becse/shap/mule/chart/hello-world"
   version     = "0.1.0"
   chart       = "hello-world"
 }
