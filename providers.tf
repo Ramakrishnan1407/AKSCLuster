@@ -38,7 +38,7 @@ provider "helm" {
   }
 
   registry {
-    url      = "https://acrtest1407.azurecr.io"
+    url      = "oci://acrtest1407.azurecr.io"
     username = "acrtest1407"
     password = "3ubRuZItsTnSttLhQmgQqB1dAPvQDsgqDQLF4Q8xnH+ACRDTGdjn"
   }
