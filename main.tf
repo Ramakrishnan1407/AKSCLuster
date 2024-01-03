@@ -48,8 +48,8 @@ resource "helm_release" "my-chart" {
   repository  = "https://acrtest1407.azurecr.io/becse/shap/mule/chart/"
   repository_username = "f024578a-6e8e-479b-a7b5-22c0d278e43f"
   repository_password = "V6n8Q~jFFIyk1Uu-r~Rsu2SR_PPW1kI-gYOGVdsw"
-  chart      = hello-world
-  version    = 0.1.0
+  chart      = "hello-world"
+  version    = "0.1.0"
   namespace  = "test-dev"
   create_namespace  = "true"
 
