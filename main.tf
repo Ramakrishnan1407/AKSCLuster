@@ -42,9 +42,15 @@ resource "azurerm_container_registry" "acr_platform_shared" {
   admin_enabled       = true
 }
 
-resource "helm_release" "example" {
-  name        = "testchart"
-  repository  = "oci://acrtest1407.azurecr.io/becse/shap/mule/chart/hello-world"
-  version     = "0.1.0"
-  chart       = "hello-world"
+resource "null_resource" "download_chart" {
+  provisioner "local-exec" {
+    command = <<-EOT
+      export HELM_EXPERIMENTAL_OCI=1
+      helm registry login acrtest1407.azurecr.io --username b214d587-26ac-4585-8e72-fe4702738a5a --password cg38Q~HCbX0nhDfsnq.9cLs1DZ59PQc8eLaFKbz0
+      #helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
+      #helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
+      #helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 --destination ./install
+      helm install myhelmtest oci://acrtest1407.azurecr.io/helm/hello-world --version 0.1.0
+    EOT
+  }
 }

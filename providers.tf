@@ -37,9 +37,4 @@ provider "helm" {
     cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config.0.cluster_ca_certificate)
   }
 
-  registry {
-    url      = "oci://acrtest1407.azurecr.io"
-    username = "acrtest1407"
-    password = "3ubRuZItsTnSttLhQmgQqB1dAPvQDsgqDQLF4Q8xnH+ACRDTGdjn"
-  }
 }
