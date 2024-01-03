@@ -45,7 +45,6 @@ resource "azurerm_container_registry" "acr_platform_shared" {
 resource "null_resource" "download_chart" {
   provisioner "local-exec" {
     command = <<-EOT
-      cd /opt/hostedtoolcache/helm/3.9.0/x64/linux-amd64/
       helm registry login acrtest1407.azurecr.io --username b214d587-26ac-4585-8e72-fe4702738a5a --password cg38Q~HCbX0nhDfsnq.9cLs1DZ59PQc8eLaFKbz0
       #helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
       #helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
