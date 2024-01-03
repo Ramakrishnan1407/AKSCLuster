@@ -50,8 +50,10 @@ resource "helm_release" "my-chart" {
   repository_password = "V6n8Q~jFFIyk1Uu-r~Rsu2SR_PPW1kI-gYOGVdsw"
   chart      = "becse/shap/mule/chart/hello-world"
   
+  /*
   depends_on = [
     azurerm_kubernetes_cluster.aks,
     azurerm_container_registry.acr_platform_shared
-  ]
+  ]*/
+  
 } 
