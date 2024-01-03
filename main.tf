@@ -49,8 +49,6 @@ resource "null_resource" "get_example_chart" {
     echo "Getting chart from OCI"
     export HELM_EXPERIMENTAL_OCI=1
     helm registry login acrtest1407.azurecr.io --username b214d587-26ac-4585-8e72-fe4702738a5a --password cg38Q~HCbX0nhDfsnq.9cLs1DZ59PQc8eLaFKbz0
-    #helm chart pull ${local.example_charts_url}${local.example_chart_name}:${local.example_chart_version}
-    #helm chart export ${local.example_charts_url}${local.example_chart_name}:${local.example_chart_version} --destination /tmp/
   EOT
   }
 }
