@@ -42,13 +42,13 @@ resource "azurerm_container_registry" "acr_platform_shared" {
   admin_enabled       = true
 }
 
-resource "null_resource" "get_example_chart" {
-  provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
-    command     = <<-EOT
-    echo "Getting chart from OCI"
-    export HELM_EXPERIMENTAL_OCI=1
-    helm registry login acrtest1407.azurecr.io --username b214d587-26ac-4585-8e72-fe4702738a5a --password cg38Q~HCbX0nhDfsnq.9cLs1DZ59PQc8eLaFKbz0
-  EOT
-  }
+resource "helm_release" "hello-world" {
+name = "hello-world"
+chart = "hello-world"
+namespace = "hello-world"
+create_namespace = "true"
+repository = "https://acrtest1407.azurecr.io/helm/hello-world"
+version = "0.1.0"
+wait = "true"
+force_update = "true"
 }
