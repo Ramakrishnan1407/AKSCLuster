@@ -48,7 +48,7 @@ jobs:
     
     - name: login to acr using helm
       run: |
-          echo $ | helm registry login $.azurecr.io --username $ --password-stdin 
+          echo $ | helm registry login acrtest1407.azurecr.io --username $ --password-stdin 
       
          
     - name: 'Terraform Init'
