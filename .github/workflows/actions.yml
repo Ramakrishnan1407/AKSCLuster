@@ -24,6 +24,10 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+      HELM_EXPERIMENTAL_OCI: 1
+      HELM_VERSION_TO_INSTALL: 3.5.0
+      ACR_NAME: acrtest1407
+      ACR_REPO_NAME: becse/shap/mule/chart/hello-world
 
     runs-on: ubuntu-latest
     environment: production
@@ -37,31 +41,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    - name: Set up Helm
-      uses: yokawasa/action-setup-kube-tools@v0.9.2
+    - name: install helm
+      uses: Azure/setup-helm@v1
       with:
-        kubectl: '1.17.1'
-        kustomize: '3.7.0'
-        helm: '3.5.2'
-        helmv2: '2.16.7'
-        kubeconform: '0.5.0'
-        conftest: '0.18.2'
-        rancher: '2.4.10'
-        tilt: '0.18.11'
-        skaffold: '1.20.0'
-        kube-score: '1.10.1'
-    - run: |
-        kubectl version --client
-        kustomize version
-        helm version
-        helmv2 version --client
-        kubeconform -v
-        conftest --version
-        yq --version
-        rancher --version
-        tilt version
-        skaffold version
-        kube-score version
+        version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
+    
+    - name: login to acr using helm
+      run: |
+          echo $ | helm registry login $.azurecr.io --username $ --password-stdin 
+      
          
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
