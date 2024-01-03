@@ -38,8 +38,8 @@ provider "helm" {
   }
 
   registry {
-    url      = "https://acrtest1407.azurecr.io/helm/v1/repo"
-    username = "b214d587-26ac-4585-8e72-fe4702738a5a"
-    password = "cg38Q~HCbX0nhDfsnq.9cLs1DZ59PQc8eLaFKbz0"
+    url      = "https://acrtest1407.azurecr.io"
+    username = "acrtest1407"
+    password = "3ubRuZItsTnSttLhQmgQqB1dAPvQDsgqDQLF4Q8xnH+ACRDTGdjn"
   }
 }
