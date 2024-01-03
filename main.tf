@@ -48,5 +48,4 @@ resource "helm_release" "my-chart" {
   repository_username = "f024578a-6e8e-479b-a7b5-22c0d278e43f"
   repository_password = "V6n8Q~jFFIyk1Uu-r~Rsu2SR_PPW1kI-gYOGVdsw"
   chart               = "becse/shap/mule/chart/hello-world"
-  
 }
