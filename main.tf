@@ -45,14 +45,11 @@ resource "azurerm_container_registry" "acr_platform_shared" {
 
 resource "helm_release" "my-chart" {
   name       = "test-dev"
-  repository  = "https://acrtest1407.azurecr.io/becse/shap/mule/chart/"
+  repository  = "https://acrtest1407.azurecr.io/helm/v1/repo"
   repository_username = "f024578a-6e8e-479b-a7b5-22c0d278e43f"
   repository_password = "V6n8Q~jFFIyk1Uu-r~Rsu2SR_PPW1kI-gYOGVdsw"
-  chart      = "hello-world"
-  version    = "0.1.0"
-  namespace  = "test-dev"
-  create_namespace  = "true"
-
+  chart      = "becse/shap/mule/chart/hello-world"
+  
   depends_on = [
     azurerm_kubernetes_cluster.aks,
     azurerm_container_registry.acr_platform_shared
