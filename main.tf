@@ -42,6 +42,7 @@ resource "azurerm_container_registry" "acr_platform_shared" {
   admin_enabled       = true
 }
 
+/*
 resource "helm_release" "hello-world" {
 name = "hello-world"
 chart = "hello-world"
@@ -51,4 +52,4 @@ repository = "oci://acrtest1407.azurecr.io/helm/hello-world"
 version = "0.1.0"
 wait = "true"
 force_update = "true"
-}
+}*/
