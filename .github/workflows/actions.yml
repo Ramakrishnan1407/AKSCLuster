@@ -40,6 +40,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Azure CLI script file
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
