@@ -59,7 +59,7 @@ resource "null_resource" "aks_upgrade" {
   
   provisioner "local-exec" {
     command = <<-EOT
-    exec "az aks maintenanceconfiguration add -g ${azurerm_resource_group.default.name} --cluster-name ${azurerm_kubernetes_cluster.aks.name} --name aksManagedAutoUpgradeSchedule --config-file ./autoupgrade.json"
+    exec "az aks maintenanceconfiguration add -g ${azurerm_resource_group.default.name} --cluster-name ${azurerm_kubernetes_cluster.aks.name} --name aksManagedAutoUpgradeSchedule --config-file './../../../autoupgrade.json'"
     exec "az aks update --resource-group ${azurerm_resource_group.default.name} --name ${azurerm_kubernetes_cluster.aks.name} --auto-upgrade-channel Rapid"
     EOT
   }
