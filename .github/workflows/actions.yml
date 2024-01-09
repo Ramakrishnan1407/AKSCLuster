@@ -46,7 +46,7 @@ jobs:
       with:
         azcliversion: 2.30.0
         inlineScript: |
-          az login
+          az login --service-principal -u ARM_CLIENT_ID -p ARM_CLIENT_SECRET --tenant ARM_TENANT_ID
           az group list 
     
     - name: 'Terraform Init'
