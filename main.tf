@@ -41,7 +41,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
     day_of_week = "Tuesday"
     start_time  = "21:40"
     utc_offset  = "+01:00"
-    start_date  = "2024-01-09"
   }
 }
 
