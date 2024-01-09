@@ -13,7 +13,7 @@ resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
 
 resource "azurerm_kubernetes_cluster" "aks" {
   location                  = "westeurope"
-  name                      = "myakscluster2"
+  name                      = "myakscluster3"
   resource_group_name       = azurerm_resource_group.default.name
   dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
   automatic_channel_upgrade = "patch"
