@@ -35,7 +35,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   maintenance_window_auto_upgrade {
-    frequency   = "weekly"
+    frequency   = "Weekly"
     interval    = 1
     duration    = 4
     day_of_week = "Tuesday"
