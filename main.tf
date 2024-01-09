@@ -12,10 +12,11 @@ resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  location            = "westeurope"
-  name                = "myakscluster"
-  resource_group_name = azurerm_resource_group.default.name
-  dns_prefix          = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
+  location                  = "westeurope"
+  name                      = "myakscluster2"
+  resource_group_name       = azurerm_resource_group.default.name
+  dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
+  automatic_channel_upgrade = "Patch"
 
   identity {
     type = "SystemAssigned"
@@ -53,3 +54,17 @@ version = "0.1.0"
 wait = "true"
 force_update = "true"
 }*/
+
+resource "null_resource" "aks_upgrade" {
+  
+  provisioner "local-exec" {
+    command = <<-EOT
+    exec "az aks maintenanceconfiguration add -g ${azurerm_resource_group.default.name} --cluster-name ${azurerm_kubernetes_cluster.aks.name} --name aksManagedAutoUpgradeSchedule --config-file autoUpgrade.json"
+    exec "az aks update --resource-group ${azurerm_resource_group.default.name} --name ${azurerm_kubernetes_cluster.aks.name} --auto-upgrade-channel Rapid"
+    EOT
+  }
+
+  depends_on = [
+    azurerm_kubernetes_cluster.aks
+  ]
+}
