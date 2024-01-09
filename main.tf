@@ -38,8 +38,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
     frequency   = "Weekly"
     interval    = 1
     duration    = 4
-    day_of_week = "Tuesday"
-    start_time  = "22:00"
+    day_of_week = "Wednesday"
+    start_time  = "22:10"
     utc_offset  = "+01:00"
   }
 }
