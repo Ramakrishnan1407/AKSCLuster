@@ -33,6 +33,16 @@ resource "azurerm_kubernetes_cluster" "aks" {
     network_policy    = "calico"
     load_balancer_sku = "standard"
   }
+
+  maintenance_window_auto_upgrade {
+    frequency   = "weekly"
+    interval    = 1
+    duration    = 4
+    day_of_week = "Tuesday"
+    start_time  = "21:40"
+    utc_offset  = "+01:00"
+    start_date  = "2024-01-09"
+  }
 }
 
 resource "azurerm_container_registry" "acr_platform_shared" {
@@ -55,6 +65,7 @@ wait = "true"
 force_update = "true"
 }*/
 
+/*
 resource "null_resource" "aks_upgrade" {
   
   provisioner "local-exec" {
@@ -64,4 +75,5 @@ resource "null_resource" "aks_upgrade" {
   depends_on = [
     azurerm_kubernetes_cluster.aks
   ]
-}
+}*/
+
