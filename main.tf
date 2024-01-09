@@ -16,7 +16,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   name                      = "myakscluster3"
   resource_group_name       = azurerm_resource_group.default.name
   dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
-  automatic_channel_upgrade = "patch"
+  automatic_channel_upgrade = "rapid"
 
   identity {
     type = "SystemAssigned"
@@ -39,7 +39,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     interval    = 1
     duration    = 4
     day_of_week = "Tuesday"
-    start_time  = "21:40"
+    start_time  = "22:00"
     utc_offset  = "+01:00"
   }
 }
