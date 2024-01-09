@@ -45,6 +45,9 @@ jobs:
       uses: azure/CLI@v1
       with:
         azcliversion: 2.30.0
+        inlineScript: |
+          az login
+          az group list 
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
