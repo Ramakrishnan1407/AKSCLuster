@@ -16,7 +16,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   name                      = "myakscluster2"
   resource_group_name       = azurerm_resource_group.default.name
   dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
-  automatic_channel_upgrade = "Patch"
+  automatic_channel_upgrade = "patch"
 
   identity {
     type = "SystemAssigned"
