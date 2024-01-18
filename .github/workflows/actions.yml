@@ -54,7 +54,7 @@ jobs:
       run: |
         $list = gh run list
         "QUE_JOB=$list" >> $env:GITHUB_ENV
-        $env:QUE_JOB
+        echo $env:QUE_JOB
       env:
         GITHUB_TOKEN: ${{ github.token }}
     
