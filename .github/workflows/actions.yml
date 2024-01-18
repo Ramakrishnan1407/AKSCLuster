@@ -47,7 +47,12 @@ jobs:
         azcliversion: 2.30.0
         inlineScript: |
           az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 'raminzenithyahooco.onmicrosoft.com'
-          az group list 
+          az group list
+
+    - shell: pwsh
+      run: |
+        $list = gh run list
+        $list
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
