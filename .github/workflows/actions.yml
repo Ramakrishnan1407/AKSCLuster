@@ -56,12 +56,6 @@ jobs:
         echo "QUE_JOB=$list" >> $env:GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ github.token }}
-
-    - name: Echo Variables
-      shell: pwsh
-      run: |
-        $queue = "${{ env.QUE_JOB }}"
-        $queue
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
@@ -90,3 +84,15 @@ jobs:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'apply'
         tf_actions_working_dir: "./terraform"
+        
+  Nextflow:
+    name: 'Nextflow'
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - name: Echo Variables
+      shell: pwsh
+      run: |
+        $queue = "${{ env.QUE_JOB }}"
+        $queue
