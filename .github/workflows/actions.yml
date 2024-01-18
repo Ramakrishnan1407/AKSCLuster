@@ -15,7 +15,7 @@ on:
           options:
             - create
             - destroy
- 
+
 jobs:
   terraform:
     name: 'Terraform'
@@ -49,6 +49,9 @@ jobs:
           az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 'raminzenithyahooco.onmicrosoft.com'
           az group list
     
+    - name: Install Gh
+      uses: actions4gh/setup-gh@v1
+    
     - name: Github workflow
       shell: pwsh
       run: |
@@ -56,11 +59,6 @@ jobs:
         echo "QUE_JOB=$list" >> $env:GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    
-    - name: Echo Variables
-      shell: pwsh
-      run: |
-        echo "${{ env.QUE_JOB }}"
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
