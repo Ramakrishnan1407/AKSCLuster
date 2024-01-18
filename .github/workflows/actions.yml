@@ -60,7 +60,8 @@ jobs:
     - name: Echo Variables
       shell: pwsh
       run: |
-        echo "${{ env.QUE_JOB }}"
+        $queue = "${{ env.QUE_JOB }}"
+        $queue
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
