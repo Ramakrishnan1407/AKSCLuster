@@ -54,6 +54,8 @@ jobs:
       run: |
         $list = gh run list
         $list
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
     
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
