@@ -52,6 +52,7 @@ jobs:
           az group list
     
     - name: github-workflow
+      id: github-workflow
       shell: pwsh
       run: |
         $list = gh run list
@@ -93,13 +94,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     
-    env:
-      QUE_JOB : ${{ needs.terraform.outputs.QUE_JOB }}
 
     steps:
     - name: Echo Variables
       shell: pwsh
       run: |
         echo "${{ env.QUE_JOB }}" 
-        $queue = ${{ env.QUE_JOB }}
+      env:
+        QUE_JOB : ${{ needs.terraform.outputs.QUE_JOB }}
         
