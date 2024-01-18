@@ -94,7 +94,7 @@ jobs:
     environment: production
     
     env:
-      QUE_JOB = ${{ needs.terraform.outputs.QUE_JOB }}
+      QUE_JOB : ${{ needs.terraform.outputs.QUE_JOB }}
 
     steps:
     - name: Echo Variables
