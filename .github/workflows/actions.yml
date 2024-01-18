@@ -99,7 +99,9 @@ jobs:
     - name: Echo Variables
       shell: pwsh
       run: |
-        echo "${{ env.QUE_JOB }}" 
+        echo "${{ env.QUE_JOB }}"
+        $list = "${{ env.QUE_JOB }}"
+        $list
       env:
         QUE_JOB : ${{ needs.terraform.outputs.QUE_JOB }}
         
