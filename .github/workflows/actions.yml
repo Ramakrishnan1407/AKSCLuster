@@ -57,6 +57,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     
+    - name: Echo Variables
+      shell: pwsh
+      run: |
+        echo "${{ env.QUE_JOB }}"
+    
     - name: 'Terraform Init'
       uses: hashicorp/terraform-github-actions@master
       with:
