@@ -95,6 +95,6 @@ jobs:
     - name: Echo Variables
       shell: pwsh
       run: |
-        echo ${{ env.QUE_JOB }}  
+        echo "${{ env.QUE_JOB }}" 
         $queue = ${{ env.QUE_JOB }}
         
