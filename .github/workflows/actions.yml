@@ -30,6 +30,8 @@ jobs:
       ACR_REPO_NAME: becse/shap/mule/chart/hello-world
 
     runs-on: ubuntu-latest
+    outputs:
+      QUE_JOB: ${{ steps.github-workflow.outputs.QUE_JOB }}
     environment: production
  
     defaults:
@@ -49,14 +51,11 @@ jobs:
           az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 'raminzenithyahooco.onmicrosoft.com'
           az group list
     
-    - name: Install Gh
-      uses: actions4gh/setup-gh@v1
-    
-    - name: Github workflow
+    - name: github-workflow
       shell: pwsh
       run: |
         $list = gh run list
-        echo "QUE_JOB=$list" >> $env:GITHUB_ENV
+        echo "QUE_JOB=$list" >> $env:GITHUB_OUTPUT
       env:
         GITHUB_TOKEN: ${{ github.token }}
     
@@ -94,6 +93,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     
+    env:
+      QUE_JOB = ${{ needs.terraform.outputs.QUE_JOB }}
+
     steps:
     - name: Echo Variables
       shell: pwsh
