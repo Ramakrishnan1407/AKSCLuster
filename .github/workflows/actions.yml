@@ -87,6 +87,7 @@ jobs:
         
   Nextflow:
     name: 'Nextflow'
+    needs: terraform
     runs-on: ubuntu-latest
     environment: production
     
