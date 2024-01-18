@@ -97,3 +97,5 @@ jobs:
       run: |
         $queue = "${{ env.QUE_JOB }}"
         $queue
+      env:
+        ${{ env.QUE_JOB }}
