@@ -98,4 +98,4 @@ jobs:
         $queue = ${{ env.QUE_JOB }}
         $queue
       env:
-        ${{ env.QUE_JOB }}
+        QUE_JOB: ${{ env.QUE_JOB }}
