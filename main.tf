@@ -18,6 +18,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
   automatic_channel_upgrade = "rapid"
   private_cluster_enabled   = true 
+  temporary_name_for_rotation = "tempcluster"
 
   identity {
     type = "SystemAssigned"
