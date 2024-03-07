@@ -27,8 +27,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   default_node_pool {
     name       = "agentpool"
     temporary_name_for_rotation = "temp"
-    vm_size    = "standard_d2as_v4"
-    node_count = 1
+    vm_size    = "standard_d8ds_v4"
+    node_count = 2
   }
 
   network_profile {
