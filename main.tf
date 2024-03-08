@@ -31,7 +31,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count = 1
     enable_auto_scaling = true
     max_count = 2
-    min_count = 0
+    min_count = 1
   }
 
   network_profile {
