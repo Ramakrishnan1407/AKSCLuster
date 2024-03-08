@@ -27,7 +27,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   default_node_pool {
     name       = "agentpool"
     temporary_name_for_rotation = "temp"
-    vm_size    = "standard_d2_v4"
+    vm_size    = "standard_b2as_v2"
     node_count = 1
     enable_auto_scaling = true
     max_count = 2
