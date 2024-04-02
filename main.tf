@@ -17,7 +17,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   resource_group_name       = azurerm_resource_group.default.name
   dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
   automatic_channel_upgrade = "rapid"
-  private_cluster_enabled   = true 
+ #private_cluster_enabled   = true 
   
 
   identity {
