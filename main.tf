@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "default" {
-  name     = "myakscluster"
+  name     = "myaksclusternew"
   location = "westeurope"
 
   tags = {
@@ -13,7 +13,7 @@ resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
 
 resource "azurerm_kubernetes_cluster" "aks" {
   location                  = "westeurope"
-  name                      = "myakscluster3"
+  name                      = "myaksclusternew"
   resource_group_name       = azurerm_resource_group.default.name
   dns_prefix                = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
   automatic_channel_upgrade = "rapid"
