@@ -32,6 +32,10 @@ resource "azurerm_kubernetes_cluster" "aks" {
     enable_auto_scaling = false
   }
 
+  storage_profile {
+    blob_driver_enabled = true
+  }
+
   network_profile {
     network_plugin    = "kubenet"
     network_policy    = "calico"
