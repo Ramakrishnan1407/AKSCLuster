@@ -89,7 +89,7 @@ resource "null_resource" "aks_upgrade" {
 }*/
 
 resource "azurerm_resource_group" "example" {
-  name     = "appgatewayram02"
+  name     = "appgatewayram03"
   location = "West Europe"
 }
 
