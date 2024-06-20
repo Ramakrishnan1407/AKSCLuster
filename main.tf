@@ -88,29 +88,29 @@ resource "null_resource" "aks_upgrade" {
   ]
 }*/
 
-resource "azurerm_resource_group" "example" {
+resource "azurerm_resource_group" "example1" {
   name     = "appgatewayram05"
   location = "West Europe"
 }
 
 resource "azurerm_virtual_network" "example" {
   name                = "example-network"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example1.name
+  location            = azurerm_resource_group.example1.location
   address_space       = ["10.254.0.0/16"]
 }
 
 resource "azurerm_subnet" "example" {
   name                 = "example"
-  resource_group_name  = azurerm_resource_group.example.name
+  resource_group_name  = azurerm_resource_group.example1.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.254.0.0/24"]
 }
 
 resource "azurerm_key_vault" "example" {
   name                        = "examplevaultram1409"
-  location                    = azurerm_resource_group.example.location
-  resource_group_name         = azurerm_resource_group.example.name
+  location                    = azurerm_resource_group.example1.location
+  resource_group_name         = azurerm_resource_group.example1.name
   enabled_for_disk_encryption = true
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days  = 7
